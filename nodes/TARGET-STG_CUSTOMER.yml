@@ -1,0 +1,148 @@
+steps:
+  STG_CUSTOMER-36dbe872-3267-48e1-bf6a-4e6586c8cefe:
+    operation:
+      config:
+        insertStrategy: INSERT
+        postSQL: ""
+        preSQL: ""
+        testsEnabled: true
+        truncateBefore: true
+      database: ""
+      deployEnabled: true
+      description: Customer data as defined by TPC-H
+      isMultisource: false
+      locationName: TARGET
+      materializationType: table
+      metadata:
+        appliedNodeTests: []
+        columns:
+          - columnReference:
+              columnCounter: 313456c7-6e36-4223-81ad-da36f89c9475
+              stepCounter: 36dbe872-3267-48e1-bf6a-4e6586c8cefe
+            dataType: NUMBER(38,0)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: C_CUSTKEY
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: ca7920c0-a150-4b76-b3fd-ee31408a9a16
+                    stepCounter: a18d4304-8730-4449-a202-4f07bbba65bb
+                transform: ""
+          - columnReference:
+              columnCounter: cfa353fb-ce53-4efc-a8ca-e9a36d20c532
+              stepCounter: 36dbe872-3267-48e1-bf6a-4e6586c8cefe
+            dataType: VARCHAR(25)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: C_NAME
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 93486555-660c-4d70-ac2a-e0a97b31eadc
+                    stepCounter: a18d4304-8730-4449-a202-4f07bbba65bb
+                transform: REGEXP_REPLACE("CUSTOMER"."C_NAME", '#','-',1)
+          - columnReference:
+              columnCounter: 46b3f701-2682-43f0-92b4-94c48e9d364e
+              stepCounter: 36dbe872-3267-48e1-bf6a-4e6586c8cefe
+            dataType: VARCHAR(40)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: C_ADDRESS
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 81839e50-6862-406a-9211-20d55af56a47
+                    stepCounter: a18d4304-8730-4449-a202-4f07bbba65bb
+                transform: ""
+          - columnReference:
+              columnCounter: 329efbd2-575d-4a42-bbdc-fcb787daf538
+              stepCounter: 36dbe872-3267-48e1-bf6a-4e6586c8cefe
+            dataType: NUMBER(38,0)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: C_NATIONKEY
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: c8d6b43e-6948-44c8-bda0-c846de716bab
+                    stepCounter: a18d4304-8730-4449-a202-4f07bbba65bb
+                transform: ""
+          - columnReference:
+              columnCounter: 84299e79-5e68-4eb6-9058-d2cfd9da9d8d
+              stepCounter: 36dbe872-3267-48e1-bf6a-4e6586c8cefe
+            dataType: VARCHAR(15)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: C_PHONE
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: b075f1f2-9ab0-465d-bbd0-0badddc0886f
+                    stepCounter: a18d4304-8730-4449-a202-4f07bbba65bb
+                transform: REPLACE("CUSTOMER"."C_PHONE",'-', '')
+          - columnReference:
+              columnCounter: 2a84b679-57e2-471d-9bfc-cb941067a633
+              stepCounter: 36dbe872-3267-48e1-bf6a-4e6586c8cefe
+            dataType: NUMBER(12,2)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: C_ACCTBAL
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 51df5885-88da-4aa9-b8e9-502c0a7b0ac3
+                    stepCounter: a18d4304-8730-4449-a202-4f07bbba65bb
+                transform: ROUND("CUSTOMER"."C_ACCTBAL")
+          - columnReference:
+              columnCounter: 0faed375-6063-4072-bee4-d37d0b147d5b
+              stepCounter: 36dbe872-3267-48e1-bf6a-4e6586c8cefe
+            dataType: VARCHAR(10)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: C_MKTSEGMENT
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 0ab57db7-513b-4024-bf01-2a47389564a7
+                    stepCounter: a18d4304-8730-4449-a202-4f07bbba65bb
+                transform: LOWER("CUSTOMER"."C_MKTSEGMENT")
+          - columnReference:
+              columnCounter: dc9a35f8-462a-4e8c-a029-21398ca230f2
+              stepCounter: 36dbe872-3267-48e1-bf6a-4e6586c8cefe
+            dataType: VARCHAR(117)
+            description: ""
+            hashColumns: []
+            hashDetails: null
+            name: C_COMMENT
+            nullable: true
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 0d295fc8-27fe-4b06-98ea-b8a84bd7a05e
+                    stepCounter: a18d4304-8730-4449-a202-4f07bbba65bb
+                transform: INITCAP("CUSTOMER"."C_COMMENT")
+        cteString: ""
+        enabledColumnTestIDs: []
+        sourceMapping:
+          - customSQL:
+              customSQL: ""
+            dependencies:
+              - locationName: SAMPLE
+                nodeName: CUSTOMER
+            join:
+              joinCondition: FROM {{ ref('SAMPLE', 'CUSTOMER') }} "CUSTOMER"
+            name: STG_CUSTOMER
+            noLinkRefs: []
+      name: STG_CUSTOMER
+      overrideSQL: false
+      schema: ""
+      sqlType: Stage
+      type: sql
+    stepCounter: 36dbe872-3267-48e1-bf6a-4e6586c8cefe
